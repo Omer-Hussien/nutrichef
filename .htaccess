@@ -1,0 +1,65 @@
+# ============================================================
+# NutriChef — Apache .htaccess Configuration
+# Smart Recipe Recommendation & Nutrition Analysis System
+# ============================================================
+
+Options -Indexes
+ServerSignature Off
+
+# ── Error Pages ──────────────────────────────────────────────
+ErrorDocument 404 /smart_recipe_system/404.php
+ErrorDocument 403 /smart_recipe_system/404.php
+
+# ── Security Headers ─────────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ── Protect Sensitive Files ───────────────────────────────────
+<FilesMatch "\.(sql|log|env|ini|bak|sh)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Block access to includes/ directory directly
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^includes/ - [F,L]
+</IfModule>
+
+# ── PHP Settings ──────────────────────────────────────────────
+<IfModule mod_php.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+    php_value session.cookie_httponly 1
+    php_value session.cookie_samesite "Strict"
+    php_value session.gc_maxlifetime 3600
+</IfModule>
+
+# ── Gzip Compression ─────────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript text/plain
+</IfModule>
+
+# ── Browser Caching ──────────────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
+
+# ── Prevent Hotlinking ────────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_REFERER} !^$
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?localhost [NC]
+    RewriteRule \.(jpg|jpeg|png|gif|svg)$ - [F,NC,L]
+</IfModule>

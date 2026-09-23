@@ -1,0 +1,160 @@
+/* ============================================================
+   NutriChef — Print Stylesheet
+   Optimised for printing recipe pages cleanly
+   ============================================================ */
+
+@media print {
+
+    /* Hide non-essential UI */
+    .navbar,
+    footer,
+    .no-print,
+    .toast-container,
+    .recipe-save-btn,
+    .hero,
+    .filter-bar,
+    .search-bar,
+    .hero-btns,
+    .sidebar,
+    .tabs .tab-btn,
+    .tab-panel:not(.active),
+    button[onclick="printRecipe()"],
+    form[method="POST"],
+    .btn-nav-cta,
+    .hamburger,
+    .section-heading a,
+    .recipe-card-footer .btn,
+    #tab-instr,
+    .related-section {
+        display: none !important;
+    }
+
+    /* Base layout */
+    body {
+        font-family: Georgia, serif;
+        font-size: 11pt;
+        color: #000;
+        background: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Page header */
+    .page-header {
+        background: none !important;
+        color: #000 !important;
+        padding: 0 0 .5rem;
+        border-bottom: 2px solid #2E7D32;
+        margin-bottom: 1rem;
+    }
+    .page-header h1 { font-size: 18pt; color: #1B5E20; }
+    .page-header p  { font-size: 10pt; color: #555; }
+    .breadcrumb     { display: none; }
+
+    /* Print logo header */
+    .print-only {
+        display: block !important;
+        text-align: center;
+        border-bottom: 2px solid #2E7D32;
+        padding-bottom: .5rem;
+        margin-bottom: 1rem;
+    }
+    .print-only h1 { font-size: 20pt; color: #1B5E20; margin: 0; }
+    .print-only p  { font-size: 9pt; color: #777; margin: 0; }
+
+    /* Cards */
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #ddd;
+        break-inside: avoid;
+        margin-bottom: .75rem;
+    }
+
+    /* Two-column recipe layout → single column */
+    [style*="grid-template-columns:1fr 340px"],
+    [style*="grid-template-columns: 1fr 340px"] {
+        display: block !important;
+    }
+
+    /* Recipe hero — minimal */
+    .recipe-card-img,
+    [style*="height:320px"] {
+        height: 60px !important;
+        font-size: 1.5rem !important;
+    }
+
+    /* Quick stats — horizontal strip */
+    [style*="grid-template-columns:repeat(4,1fr)"],
+    [style*="grid-template-columns: repeat(4, 1fr)"] {
+        display: flex !important;
+        flex-wrap: wrap;
+        gap: .5rem;
+    }
+
+    /* Nutrition bars */
+    .nutrition-bar-track { border: 1px solid #ddd; }
+    .nutrition-bar-fill  { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+    /* Ingredients */
+    .ingredient-row {
+        padding: .3rem 0;
+        border-bottom: 1px dotted #ddd;
+        font-size: 10pt;
+    }
+
+    /* Instructions */
+    .instruction-step { break-inside: avoid; margin-bottom: .5rem; }
+    .step-num {
+        background: #2E7D32 !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    /* Tabs — show both panels in print */
+    .tab-panel { display: block !important; }
+
+    /* Badges */
+    .badge {
+        border: 1px solid #aaa;
+        background: #fff !important;
+        color: #333 !important;
+    }
+
+    /* Page breaks */
+    h2 { page-break-after: avoid; }
+    table { page-break-inside: avoid; }
+
+    /* Nutrition facts sidebar */
+    .nutrition-section {
+        width: 100% !important;
+        position: static !important;
+        margin-top: 1rem;
+    }
+
+    /* Canvas charts — show as text alternative */
+    canvas { display: none; }
+
+    /* Footer info */
+    @page {
+        size: A4;
+        margin: 15mm 15mm 15mm 15mm;
+    }
+
+    /* Print footer */
+    body::after {
+        content: "Printed from NutriChef — Smart Recipe Recommendation & Nutrition Analysis System | " attr(data-url);
+        display: block;
+        text-align: center;
+        font-size: 8pt;
+        color: #999;
+        border-top: 1px solid #ddd;
+        padding-top: .5rem;
+        margin-top: 1rem;
+    }
+}

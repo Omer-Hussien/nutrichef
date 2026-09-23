@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Support | NutriChef</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        body { background-color: #f4f7f6; font-family: 'Poppins', sans-width; }
+        .support-container { 
+            max-width: 900px; 
+            margin: 3rem auto; 
+            padding: 2.5rem; 
+            background: #fff; 
+            border-radius: 12px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05); 
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        .info-box {
+            background: #f9fbf9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #2E7D32;
+            margin-bottom: 1.5rem;
+        }
+        .info-title { font-weight: 700; color: #1B5E20; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .info-text { color: #555; font-size: 0.95rem; line-height: 1.6; }
+        .form-label { font-weight: 600; font-size: 0.9rem; color: #333; margin-bottom: 0.4rem; display: block; }
+        .form-control { 
+            width: 100%; 
+            padding: 0.8rem; 
+            border: 1px solid #ccc; 
+            border-radius: 6px; 
+            margin-bottom: 1.25rem; 
+            font-family: inherit;
+        }
+        .btn-submit {
+            background: #2E7D32;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        .btn-submit:hover { background: #1B5E20; }
+        
+        /* Mobile adjustment */
+        @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+    <header class="navbar" style="background: #1B5E20; padding: 1rem 2rem; color: #fff;">
+        <div style="font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-leaf" style="color: #FFC107;"></i> NutriChef Support
+        </div>
+    </header>
+
+    <div class="support-container">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h1 style="color: #212121; font-weight: 800; margin-bottom: 0.5rem;">Get in Touch</h1>
+            <p style="color: #757575;">Have a question about a recipe, your meal plan, or your account? We're here to help.</p>
+        </div>
+        
+        <div class="contact-grid">
+            
+            <div>
+                <h3 style="margin-bottom: 1.5rem; color: #2E7D32;"><i class="fas fa-headset"></i> Support Channels</h3>
+                
+                <div class="info-box">
+                    <div class="info-title"><i class="fas fa-envelope"></i> Email Support</div>
+                    <div class="info-text">
+                        <strong>support@nutrichef.com</strong><br>
+                        We aim to respond to all inquiries within 24 hours.
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-title"><i class="fas fa-phone-alt"></i> Phone Line</div>
+                    <div class="info-text">
+                        <strong>+60 12-345 6789</strong><br>
+                        Mon - Fri: 9:00 AM - 6:00 PM (MYT)<br>
+                        Weekend: Closed
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-title"><i class="fas fa-map-marker-alt"></i> Headquarters</div>
+                    <div class="info-text">
+                        NutriChef Development Team<br>
+                        Multimedia University (MMU)<br>
+                        Melaka, Malaysia
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 style="margin-bottom: 1.5rem; color: #2E7D32;"><i class="fas fa-paper-plane"></i> Send a Message</h3>
+                
+                <form action="index.php" method="GET">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" placeholder="John Doe" required>
+                    
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" placeholder="john@example.com" required>
+                    
+                    <label class="form-label">Subject</label>
+                    <select class="form-control" required>
+                        <option value="">-- Select a Topic --</option>
+                        <option value="account">Account & Profile Issues</option>
+                        <option value="recipes">Recipe Calculation Error</option>
+                        <option value="technical">Technical Bug / Crash</option>
+                        <option value="feedback">General Feedback</option>
+                    </select>
+
+                    <label class="form-label">Message</label>
+                    <textarea class="form-control" rows="5" placeholder="Describe your issue in detail..." required></textarea>
+                    
+                    <button type="submit" class="btn-submit">Submit Ticket</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div style="margin-top: 3.5rem; text-align: center; border-top: 1px solid #eee; padding-top: 2rem;">
+            <a href="../index.php" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; color: #1B5E20; border: 2px solid #1B5E20; font-weight: 700; transition: 0.2s;">
+                <i class="fas fa-arrow-left"></i> Return to Application
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
